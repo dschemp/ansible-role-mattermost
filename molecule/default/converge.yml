@@ -1,0 +1,6 @@
+---
+- name: "Converge."
+  hosts: "all,!sidecar"
+  roles:
+    - role: "dschemp.mattermost"
+      become: true
