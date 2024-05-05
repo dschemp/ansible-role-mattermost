@@ -1,2 +1,12 @@
 ---
-# tasks file for mattermost
+- name: "Import preflight tasks."
+  ansible.builtin.import_tasks: "preflight.yml"
+
+- name: "Import install tasks."
+  ansible.builtin.import_tasks: "install.yml"
+
+- name: "Import systemd tasks."
+  ansible.builtin.import_tasks: "systemd.yml"
+
+- name: "Flush handlers."
+  ansible.builtin.meta: "flush_handlers"

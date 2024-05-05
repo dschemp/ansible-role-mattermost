@@ -1,2 +1,5 @@
 ---
-# handlers file for mattermost
+- name: "Restart application."
+  ansible.builtin.systemd_service:
+    name: "{{ __mattermost_service_name }}"
+    state: "restarted"

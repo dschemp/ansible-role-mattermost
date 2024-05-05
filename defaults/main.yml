@@ -1,2 +1,22 @@
 ---
-# defaults file for mattermost
+# Check https://docs.mattermost.com/upgrade/version-archive.html for all available options.
+# TODO: Specify a specific version ("9.7.3"), "latest" for the latest version or "esr" for the latest ESR release.
+mattermost_version: "9.7.3"
+# You can choose between "team" or "enterprise"
+mattermost_edition: "team"
+
+mattermost_user: "mattermost"
+mattermost_group: "mattermost"
+
+mattermost_dir: "/opt/mattermost"
+
+# Mattermost database settings
+# For now, only Postgres is supported.
+mattermost_db_host: "localhost:5432"
+mattermost_db_schema: "mattermost"
+mattermost_db_username: "mattermost"
+mattermost_db_password: "mattermost"
+
+# Mattermost settings
+mattermost_listen_address: ":8065"
+# mattermost_site_url: "https://mattermost.example.org"

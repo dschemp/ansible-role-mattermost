@@ -1,0 +1,20 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Mattermost
+After=network.target
+
+[Service]
+Type=notify
+User={{ mattermost_user }}
+Group={{ mattermost_group }}
+WorkingDirectory={{ mattermost_dir }}
+TimeoutStartSec=3600
+KillMode=mixed
+Restart=always
+RestartSec=10
+LimitNOFILE=49152
+ExecStart={{ mattermost_dir }}/bin/mattermost
+
+[Install]
+WantedBy=multi-user.target

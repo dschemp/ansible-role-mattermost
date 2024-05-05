@@ -1,0 +1,39 @@
+---
+- name: "Download archive."
+  ansible.builtin.get_url:
+    url: "{{ __mattermost_download_url[mattermost_edition] }}"
+    checksum: "{{ __mattermost_download_checksum }}"
+    dest: "/var/tmp"
+    owner: "{{ mattermost_user }}"
+    group: "{{ mattermost_group }}"
+    mode: "0644"
+  register: "__mattermost_downloaded_file"
+  notify:
+    - "Restart application."
+
+- name: "Extract archive."
+  ansible.builtin.unarchive:
+    src: "{{ __mattermost_downloaded_file.dest }}"
+    dest: "/var/tmp"
+    remote_src: true
+    owner: "{{ mattermost_user }}"
+    group: "{{ mattermost_group }}"
+
+- name: "Copy archive content."
+  ansible.builtin.copy:
+    src: "/var/tmp/mattermost/"
+    dest: "{{ mattermost_dir }}"
+    owner: "{{ mattermost_user }}"
+    group: "{{ mattermost_group }}"
+    mode: "preserve"
+    remote_src: true
+
+- name: "Copy config file."
+  ansible.builtin.template:
+    src: "config.json.j2"
+    dest: "{{ mattermost_dir }}/config/config.json"
+    owner: "{{ mattermost_user }}"
+    group: "{{ mattermost_group }}"
+    mode: "0600"
+  notify:
+    - "Restart application."

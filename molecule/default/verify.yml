@@ -1,0 +1,15 @@
+---
+- name: "Verify."
+  hosts: "all,!sidecar"
+  become: true
+  tasks:
+    - name: "Perform ping request."
+      ansible.builtin.uri:
+        url: "http://localhost:8065/api/v4/system/ping"
+      register: "mattermost_ping_request"
+
+    - name: "Assert."
+      ansible.builtin.assert:
+        that:
+          - "mattermost_ping_request.status == 200"
+          - "mattermost_ping_request.json.status | lower == 'ok'"

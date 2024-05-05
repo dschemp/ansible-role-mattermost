@@ -1,0 +1,23 @@
+---
+- name: "Create runtime group."
+  ansible.builtin.group:
+    name: "{{ mattermost_group }}"
+    system: true
+    state: "present"
+
+- name: "Create runtime user."
+  ansible.builtin.user:
+    name: "{{ mattermost_user }}"
+    group: "{{ mattermost_group }}"
+    create_home: false
+    home: "{{ mattermost_dir }}"
+    system: true
+    state: "present"
+
+# - name: "Ensure application directory exists."
+#   ansible.builtin.file:
+#     path: "{{ mattermost_dir }}"
+#     owner: "{{ mattermost_user }}"
+#     group: "{{ mattermost_group }}"
+#     mode: "0755"
+#     state: "directory"

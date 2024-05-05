@@ -1,2 +1,8 @@
 ---
-# vars file for mattermost
+__mattermost_download_url:
+  "team": "https://releases.mattermost.com/{{ mattermost_version }}/mattermost-team-{{ mattermost_version }}-linux-amd64.tar.gz"
+  "enterprise": "https://releases.mattermost.com/{{ mattermost_version }}/mattermost-{{ mattermost_version }}-linux-amd64.tar.gz"
+
+__mattermost_download_checksum: "sha256:{{ __mattermost_download_url[mattermost_edition] }}.sha256"
+
+__mattermost_service_name: "mattermost"

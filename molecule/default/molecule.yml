@@ -22,40 +22,8 @@ platforms:
       - 5432:5432
     networks:
       - name: molecule
-  - name: rockylinux8
-    image: "geerlingguy/docker-rockylinux8-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-    cgroupns_mode: host
-    privileged: true
-    pre_build_image: true
-    published_ports:
-      - 8000:8000
-    networks:
-      - name: molecule
-  - name: rockylinux9
-    image: "geerlingguy/docker-rockylinux9-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-    cgroupns_mode: host
-    privileged: true
-    pre_build_image: true
-    networks:
-      - name: molecule
-  - name: ubuntu2204
-    image: "geerlingguy/docker-ubuntu2204-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-    cgroupns_mode: host
-    privileged: true
-    pre_build_image: true
-    networks:
-      - name: molecule
-  - name: ubuntu2004
-    image: "geerlingguy/docker-ubuntu2004-ansible:latest"
+  - name: app
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-rockylinux8}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
