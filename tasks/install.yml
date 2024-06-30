@@ -37,3 +37,20 @@
     mode: "0600"
   notify:
     - "Restart service."
+
+- name: "Fix SELinux context for binaries."
+  when: "ansible_facts.selinux.status == 'enabled'"
+  block:
+    - name: "Change SELinux context of binaries."
+      become: true
+      community.general.sefcontext:
+        ftype: "f"
+        path: "{{ mattermost_dir }}/bin/.*"
+        setype: "bin_t"
+        state: "present"
+
+    - name: "Apply SELinux file context."
+      become: true
+      ansible.builtin.command:
+        cmd: "restorecon -ir {{ mattermost_dir }}/bin"
+      changed_when: false

@@ -13,8 +13,7 @@ User={{ mattermost_user }}
 Group={{ mattermost_group }}
 WorkingDirectory={{ mattermost_dir }}
 
-ExecStart={{ mattermost_dir }}/bin/mattermost server \
-            --config {{ mattermost_dir }}/config/config.json
+ExecStart={{ mattermost_dir }}/bin/mattermost
 
 TimeoutStartSec=3600
 KillMode=mixed
