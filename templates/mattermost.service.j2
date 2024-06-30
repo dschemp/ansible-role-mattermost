@@ -1,20 +1,25 @@
 {{ ansible_managed | comment }}
 
 [Unit]
-Description=Mattermost
-After=network.target
+Description=Mattermost Server
+Documentation=https://docs.mattermost.com
+Wants=network-online.target
+After=network-online.target
+After=postgresql.service
 
 [Service]
 Type=notify
 User={{ mattermost_user }}
 Group={{ mattermost_group }}
 WorkingDirectory={{ mattermost_dir }}
+
+ExecStart={{ mattermost_dir }}/bin/mattermost
+
 TimeoutStartSec=3600
 KillMode=mixed
 Restart=always
 RestartSec=10
 LimitNOFILE=49152
-ExecStart={{ mattermost_dir }}/bin/mattermost
 
 [Install]
 WantedBy=multi-user.target

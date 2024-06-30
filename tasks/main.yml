@@ -1,4 +1,7 @@
 ---
+- name: "Import variable tasks."
+  ansible.builtin.import_tasks: "set_vars.yml"
+
 - name: "Import preflight tasks."
   ansible.builtin.import_tasks: "preflight.yml"
 
@@ -7,6 +10,3 @@
 
 - name: "Import systemd tasks."
   ansible.builtin.import_tasks: "systemd.yml"
-
-- name: "Flush handlers."
-  ansible.builtin.meta: "flush_handlers"

@@ -9,7 +9,7 @@
     mode: "0644"
   register: "__mattermost_downloaded_file"
   notify:
-    - "Restart application."
+    - "Restart service."
 
 - name: "Extract archive."
   ansible.builtin.unarchive:
@@ -36,4 +36,4 @@
     group: "{{ mattermost_group }}"
     mode: "0600"
   notify:
-    - "Restart application."
+    - "Restart service."
