@@ -1,7 +1,7 @@
 ---
 # Check https://docs.mattermost.com/upgrade/version-archive.html for all available options.
 # TODO: Be able to specify a "latest" for the latest version or "esr" for the latest ESR release.
-mattermost_version: "10.1.2"
+mattermost_version: "10.10.1"
 # You can choose between "team" or "enterprise"
 mattermost_edition: "team"
 
@@ -9,6 +9,7 @@ mattermost_user: "mattermost"
 mattermost_group: "mattermost"
 
 mattermost_dir: "/opt/mattermost"
+mattermost_data_dir: "/var/lib/mattermost"
 
 # Mattermost database settings
 # For now, only Postgres is supported.

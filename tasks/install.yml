@@ -11,6 +11,26 @@
   notify:
     - "Restart service."
 
+- name: "Ensure directories exist."
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: "directory"
+  loop:
+    - "{{ mattermost_dir }}"
+    - "{{ mattermost_data_dir }}"
+
+- name: "Ensure directories have right permissions."
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: "directory"
+    owner: "{{ mattermost_user }}"
+    group: "{{ mattermost_group }}"
+    mode: "0750"
+  loop:
+    - "{{ mattermost_dir }}"
+    - "{{ mattermost_data_dir }}"
+
 - name: "Extract archive."
   ansible.builtin.unarchive:
     src: "{{ __mattermost_downloaded_file.dest }}"
