@@ -19,6 +19,109 @@ mattermost_db_username: "mattermost"
 mattermost_db_password: "mattermost"
 mattermost_db_sslmode: "disable"
 
-# Mattermost settings
-mattermost_listen_address: ":8065"
-# mattermost_site_url: "https://mattermost.example.org"
+# Web server settings
+mattermost_webserver_listen_address: ":8065"
+# mattermost_webserver_site_url: "https://mattermost.example.org"
+
+mattermost_webserver_tls_minimum_version: "1.2"
+
+mattermost_webserver_https_redirect: false
+
+# Team settings
+mattermost_team_user_creation_enabled: false
+
+# Logging settings
+mattermost_logging_console_enabled: true
+mattermost_logging_console_level: "INFO"
+mattermost_logging_console_json: true
+mattermost_logging_console_color_enabled: false
+
+mattermost_logging_file_enabled: true
+mattermost_logging_file_level: "INFO"
+mattermost_logging_file_json: true
+mattermost_logging_file_path: ""
+
+mattermost_logging_webhook_debugging_enabled: true
+
+mattermost_logging_diagnostics_enabled: true
+mattermost_logging_diagnostics_verbose: false
+
+mattermost_logging_sentry_enabled: true
+
+# Notification logging settings
+mattermost_notification_logging_console_enabled: true
+mattermost_notification_logging_console_level: "INFO"
+mattermost_notification_logging_console_json: true
+mattermost_notification_logging_console_color_enabled: false
+
+mattermost_notification_logging_file_enabled: true
+mattermost_notification_logging_file_level: "INFO"
+mattermost_notification_logging_file_json: true
+mattermost_notification_logging_file_path: ""
+
+# Password settings
+mattermost_password_minimum_length: 8 # Minimum number of characters required for a valid password. Must be a whole number greater than or equal to 5 and less than or equal to 72.
+mattermost_password_lowercase_required: false # At least one lowercase letter
+mattermost_password_uppercase_required: false # At least one uppercase letter
+mattermost_password_number_required: false # At least one number
+mattermost_password_symbol_required: false # At least one symbol
+mattermost_password_forgot_link_enabled: true # Display a "Forgot password" link on the login page to users
+
+# Email settings
+mattermost_email_sign_up_with_email_enabled: true
+mattermost_email_sign_in_with_email_enabled: true
+mattermost_email_sign_in_with_username_enabled: true
+mattermost_email_send_email_notifications: false
+mattermost_email_use_channel_in_email_notifications: false
+mattermost_email_email_verification_required: false
+
+mattermost_email_feedback_name: ""
+mattermost_email_feedback_address: ""
+
+mattermost_email_reply_to_address: ""
+
+mattermost_email_smtp_auth_enabled: false
+mattermost_email_smtp_auth_username: ""
+mattermost_email_smtp_auth_password: ""
+mattermost_email_smtp_server: ""
+mattermost_email_smtp_port: "10025"
+mattermost_email_smtp_server_timeout: 10
+mattermost_email_smtp_server_validate_certificate: true
+
+mattermost_email_batching_enabled: false
+mattermost_email_batching_buffer_size: 256
+mattermost_email_batching_interval: 30
+
+# Support settings
+mattermost_support_terms_of_service_link: "https://mattermost.com/pl/terms-of-use/"
+mattermost_support_privacy_policy_link: "https://mattermost.com/pl/privacy-policy/"
+mattermost_support_about_link: "https://mattermost.com/pl/about-mattermost"
+mattermost_support_help_link: "https://mattermost.com/pl/help/"
+mattermost_support_report_a_problem_link: "https://mattermost.com/pl/report-a-bug"
+mattermost_support_forgot_password_link: ""
+mattermost_support_email: ""
+mattermost_support_custom_terms_of_service_enabled: false
+mattermost_support_custom_terms_of_service_re_acceptance_period: 365
+mattermost_support_ask_community_link_enabled: true
+
+# Metrics settings
+mattermost_metrics_enabled: false
+mattermost_metrics_block_profile_rate: 0
+mattermost_metrics_listen_address: ":8067"
+
+# Date retention settings
+mattermost_data_retention_message_deletion_enabled: false
+mattermost_data_retention_message_retention_days: 365
+mattermost_data_retention_message_retention_hours: 0
+
+mattermost_data_retention_file_deletion_enabled: false
+mattermost_data_retention_file_retention_days: 365
+mattermost_data_retention_file_retention_hours: 0
+
+mattermost_data_retention_boards_deletion_enabled: false
+mattermost_data_retention_boards_retention_days: 365
+
+mattermost_data_retention_deletion_job_start_time: "02:00"
+mattermost_data_retention_batch_size: 3000
+mattermost_data_retention_time_between_batches_milliseconds: 100
+mattermost_data_retention_retention_ids_batch_size: 100
