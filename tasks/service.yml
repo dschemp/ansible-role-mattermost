@@ -16,3 +16,15 @@
     daemon_reload: true
     enabled: "{{ mattermost_service_enabled }}"
     state: "{{ mattermost_service_state }}"
+
+- name: "Wait for service to be up."
+  when: "mattermost_service_state == 'started'"
+  vars:
+    # TODO: add _host part
+    _port: "{{ (mattermost_webserver_listen_address | split(':'))[-1] }}"
+  ansible.builtin.uri:
+    url: "http://localhost:{{ _port }}/api/v4/system/ping"
+  register: "_result"
+  retries: 12 # 60s
+  delay: 5
+  until: "_result.status == 200"
