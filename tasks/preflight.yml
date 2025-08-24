@@ -12,6 +12,7 @@
     name: "{{ mattermost_user }}"
     group: "{{ mattermost_group }}"
     system: true
+    create_home: false
     home: "{{ mattermost_dir }}"
     shell: "/sbin/nologin"
     state: "present"

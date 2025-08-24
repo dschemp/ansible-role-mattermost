@@ -3,10 +3,11 @@
   ansible.builtin.service_facts: {}
 
 - name: "Stop service."
-  when: "mattermost_daemon_name in ansible_facts.services"
+  when: "mattermost_service_name in ansible_facts.services"
   become: true
   ansible.builtin.service:
-    name: "{{ mattermost_daemon_name }}"
+    name: "{{ mattermost_service_name }}"
+    enabled: false
     state: "stopped"
 
 - name: "Delete files."
@@ -15,5 +16,5 @@
     path: "{{ item }}"
     state: "absent"
   loop:
-    - "/etc/systemd/system/{{ mattermost_daemon_name }}.service"
+    - "/etc/systemd/system/{{ mattermost_service_name }}.service"
     - "{{ mattermost_dir }}"

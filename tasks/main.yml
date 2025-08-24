@@ -8,5 +8,5 @@
 - name: "Import install tasks."
   ansible.builtin.import_tasks: "install.yml"
 
-- name: "Import systemd tasks."
-  ansible.builtin.import_tasks: "systemd.yml"
+- name: "Import service tasks."
+  ansible.builtin.import_tasks: "service.yml"

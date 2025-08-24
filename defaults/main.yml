@@ -8,6 +8,9 @@ mattermost_edition: "team"
 mattermost_user: "mattermost"
 mattermost_group: "mattermost"
 
+mattermost_service_enabled: true
+mattermost_service_state: "started"
+
 mattermost_dir: "/opt/mattermost"
 mattermost_data_dir: "/var/lib/mattermost"
 
