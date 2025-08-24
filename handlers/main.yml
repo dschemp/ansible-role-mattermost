@@ -2,4 +2,4 @@
 - name: "Restart service."
   ansible.builtin.systemd_service:
     name: "{{ mattermost_service_name }}"
-    state: "restarted"
+    state: "{{ 'restarted' if mattermost_service_state == 'started' else 'stopped' }}"
