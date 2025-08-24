@@ -7,15 +7,15 @@
     group: "root"
     mode: "0644"
 
-- name: "Flush handlers."
-  ansible.builtin.meta: "flush_handlers"
-
-- name: "Start and enable service."
+- name: "Set service state."
   ansible.builtin.systemd_service:
     name: "{{ mattermost_service_name }}"
     daemon_reload: true
     enabled: "{{ mattermost_service_enabled }}"
     state: "{{ mattermost_service_state }}"
+
+- name: "Flush handlers."
+  ansible.builtin.meta: "flush_handlers"
 
 - name: "Wait for service to be up."
   when: "mattermost_service_state == 'started'"
