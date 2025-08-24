@@ -11,7 +11,7 @@
   notify:
     - "Restart service."
 
-- name: "Ensure directories exist."
+- name: "Ensure directories exist." # noqa risky-file-permissions
   become: true
   ansible.builtin.file:
     path: "{{ item }}"
@@ -38,6 +38,14 @@
     remote_src: true
     owner: "{{ mattermost_user }}"
     group: "{{ mattermost_group }}"
+
+- name: "Stop service before installing new version."
+  when:
+    - "mattermost_installed_version is defined"
+    - "mattermost_installed_version is version(mattermost_version, '!=')"
+  ansible.builtin.service:
+    name: "{{ mattermost_service_name }}"
+    state: "stopped"
 
 - name: "Copy archive content."
   ansible.builtin.copy:

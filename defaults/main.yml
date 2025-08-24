@@ -5,6 +5,8 @@ mattermost_version: "10.11.2"
 # You can choose between "team" or "enterprise"
 mattermost_edition: "team"
 
+mattermost_allow_downgrade: false
+
 mattermost_user: "mattermost"
 mattermost_group: "mattermost"
 

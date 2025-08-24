@@ -17,10 +17,32 @@
     shell: "/sbin/nologin"
     state: "present"
 
-# - name: "Ensure application directory exists."
-#   ansible.builtin.file:
-#     path: "{{ mattermost_dir }}"
-#     owner: "{{ mattermost_user }}"
-#     group: "{{ mattermost_group }}"
-#     mode: "0755"
-#     state: "directory"
+# Check for installed binary and extract currently installed version.
+- name: "Check if binary exists."
+  become: true
+  ansible.builtin.stat:
+    path: "{{ mattermost_dir }}/bin/mattermost"
+  register: "__mattermost_bin_stat"
+
+- name: "Get currently installed version."
+  when: "__mattermost_bin_stat.stat.exists"
+  block:
+    - name: "Get installed Mattermost version."
+      become: true
+      ansible.builtin.command: "{{ mattermost_dir }}/bin/mattermost version"
+      changed_when: false
+      register: "__mattermost_version_cmd"
+
+    - name: "Extract installed Mattermost version."
+      ansible.builtin.set_fact:
+        mattermost_installed_version: "{{ __mattermost_version_cmd.stdout | regex_search('Version: (.*)', '\\1') | first }}"
+
+- name: "Fail if downgrade detected."
+  when:
+    - "not mattermost_allow_downgrade"
+    - "mattermost_installed_version is defined"
+    - "mattermost_installed_version is version(mattermost_version, '>')"
+  ansible.builtin.fail:
+    msg: >-
+      Attempted downgrade detected ({{ mattermost_installed_version }} ~> {{ mattermost_version }})!
+      Set 'mattermost_allow_downgrade' to 'true' to allow downgrades.

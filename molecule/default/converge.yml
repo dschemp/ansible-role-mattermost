@@ -1,11 +1,11 @@
 ---
 - name: "Converge."
   hosts: "all,!sidecar"
+  become: true
+  vars:
+    mattermost_db_host: "postgres"
+    mattermost_db_schema: "mattermost"
+    mattermost_db_username: "mattermost"
+    mattermost_db_password: "mattermost123!"
   roles:
     - role: "dschemp.mattermost"
-      become: true
-      vars:
-        mattermost_db_host: "postgres"
-        mattermost_db_schema: "mattermost"
-        mattermost_db_username: "mattermost"
-        mattermost_db_password: "mattermost123!"
