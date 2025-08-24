@@ -261,12 +261,12 @@
     "FeedbackEmail": {{ mattermost_email_feedback_address | to_json }},
     "ReplyToAddress": {{ mattermost_email_reply_to_address | to_json }},
     "FeedbackOrganization": "",
-    "EnableSMTPAuth": {{ mattermost_email_smtp_auth_enabled | to_json }}
-    "SMTPUsername": {{ mattermost_email_smtp_auth_username | to_json }}
-    "SMTPPassword": {{ mattermost_email_smtp_auth_password | to_json }}
-    "SMTPServer": {{ mattermost_email_smtp_server | to_json }}
-    "SMTPPort": {{ mattermost_email_smtp_port | to_json }}
-    "SMTPServerTimeout": {{ mattermost_email_smtp_server_timeout | to_json }}
+    "EnableSMTPAuth": {{ mattermost_email_smtp_auth_enabled | to_json }},
+    "SMTPUsername": {{ mattermost_email_smtp_auth_username | to_json }},
+    "SMTPPassword": {{ mattermost_email_smtp_auth_password | to_json }},
+    "SMTPServer": {{ mattermost_email_smtp_server | to_json }},
+    "SMTPPort": {{ mattermost_email_smtp_port | to_json }},
+    "SMTPServerTimeout": {{ mattermost_email_smtp_server_timeout | to_json }},
     "ConnectionSecurity": "",
     "SendPushNotifications": true,
     "PushNotificationServer": "https://push-test.mattermost.com",
@@ -276,7 +276,7 @@
     "EmailBatchingBufferSize": {{ mattermost_email_batching_buffer_size | to_json }},
     "EmailBatchingInterval": {{ mattermost_email_batching_interval | to_json }},
     "EnablePreviewModeBanner": true,
-    "SkipServerCertificateVerification": {{ (not mattermost_email_smtp_server_validate_certificate) | to_json }}
+    "SkipServerCertificateVerification": {{ (not mattermost_email_smtp_server_validate_certificate) | to_json }},
     "EmailNotificationContentsType": "full",
     "LoginButtonColor": "#0000",
     "LoginButtonBorderColor": "#2389D7",
