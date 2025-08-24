@@ -17,6 +17,7 @@ mattermost_db_host: "localhost:5432"
 mattermost_db_schema: "mattermost"
 mattermost_db_username: "mattermost"
 mattermost_db_password: "mattermost"
+mattermost_db_sslmode: "disable"
 
 # Mattermost settings
 mattermost_listen_address: ":8065"

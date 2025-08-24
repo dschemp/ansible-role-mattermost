@@ -146,7 +146,7 @@
   },
   "SqlSettings": {
     "DriverName": "postgres",
-    "DataSource": "postgres://{{ mattermost_db_username }}:{{ mattermost_db_password }}@{{ mattermost_db_host }}/{{ mattermost_db_schema }}?sslmode=disable\u0026connect_timeout=10\u0026binary_parameters=yes",
+    "DataSource": "postgres://{{ mattermost_db_username }}:{{ mattermost_db_password }}@{{ mattermost_db_host }}/{{ mattermost_db_schema }}?sslmode={{ mattermost_db_sslmode }}\u0026connect_timeout=10\u0026binary_parameters=yes",
     "DataSourceReplicas": [],
     "DataSourceSearchReplicas": [],
     "MaxIdleConns": 20,
