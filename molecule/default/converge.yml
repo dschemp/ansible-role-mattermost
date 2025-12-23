@@ -7,5 +7,6 @@
     mattermost_db_schema: "mattermost"
     mattermost_db_username: "mattermost"
     mattermost_db_password: "mattermost123!"
+    mattermost_team_user_creation_enabled: true
   roles:
     - role: "dschemp.mattermost"

@@ -1,7 +1,7 @@
 ---
 # Check https://docs.mattermost.com/upgrade/version-archive.html for all available options.
 # TODO: Be able to specify a "latest" for the latest version or "esr" for the latest ESR release.
-mattermost_version: "10.11.2"
+mattermost_version: "11.2.1"
 # You can choose between "team" or "enterprise"
 mattermost_edition: "team"
 
@@ -65,7 +65,9 @@ mattermost_notification_logging_file_json: true
 mattermost_notification_logging_file_path: ""
 
 # Password settings
-mattermost_password_minimum_length: 8 # Minimum number of characters required for a valid password. Must be a whole number greater than or equal to 5 and less than or equal to 72.
+# Minimum number of characters required for a valid password.
+# Must be a whole number greater than or equal to 5 and less than or equal to 72.
+mattermost_password_minimum_length: 8
 mattermost_password_lowercase_required: false # At least one lowercase letter
 mattermost_password_uppercase_required: false # At least one uppercase letter
 mattermost_password_number_required: false # At least one number

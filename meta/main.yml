@@ -6,7 +6,7 @@ galaxy_info:
   role_name: mattermost
   issue_tracker_url: https://github.com/dschemp/ansible-role-mattermost/issues
   license: MIT
-  min_ansible_version: "2.1"
+  min_ansible_version: "2.17"
 
   platforms:
     - name: EL
@@ -15,9 +15,9 @@ galaxy_info:
         - "9"
     - name: Ubuntu
       versions:
-        - noble # 24.04 LTS
-        - jammy # 22.04 LTS
-        - focal # 20.04 LTS
+        - "noble" # 24.04 LTS
+        - "jammy" # 22.04 LTS
+        - "focal" # 20.04 LTS
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes
